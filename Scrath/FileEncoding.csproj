@@ -7,8 +7,8 @@
     <ProjectGuid>{93FED77A-9426-4D0C-93C4-9D97210E9EC1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Scrath</RootNamespace>
-    <AssemblyName>Scrath</AssemblyName>
+    <RootNamespace>FileEncoding</RootNamespace>
+    <AssemblyName>FileEncoding</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
