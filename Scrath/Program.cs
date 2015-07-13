@@ -9,12 +9,20 @@ namespace Scrath
     {
         static void Main(string[] args)
         {
-            
-            var stream = new FileStream(@"TestFiles\Aeromexico Hierarchy V2.csv",FileMode.Open,FileAccess.Read);
-            using (var streamReader = new StreamReader(stream, Encoding.Default))
+
+            PrintFile("Default Encoding", @"TestFiles\Aeromexico Hierarchy V2.csv", Encoding.Default);
+            Console.ReadLine();
+        }
+
+        private static void PrintFile(string type, string file, Encoding encoding)
+        {
+            Console.WriteLine(type);
+
+            using(var stream = new FileStream(file,FileMode.Open,FileAccess.Read))
+            using (var streamReader = new StreamReader(stream, encoding))
             {
                 var csvReader = new CsvReader(streamReader);
-
+                Console.OutputEncoding = encoding;
                 var i = 0;
                 while (csvReader.Read() && i < 10)
                 {
@@ -26,11 +34,12 @@ namespace Scrath
                     Console.WriteLine();
                     i++;
                 }
-
-                Console.ReadLine();
-
             }
-
+            Console.WriteLine();
+            Console.WriteLine();
+                
         }
+
+
     }
 }
