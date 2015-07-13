@@ -10,13 +10,14 @@ namespace Scrath
         static void Main(string[] args)
         {
 
-            PrintFile("Default Encoding", @"TestFiles\Aeromexico Hierarchy V2.csv", Encoding.Default);
+            PrintFile("Default Encoding", @"TestFiles\ANSI.csv", Encoding.Default);
+            PrintFile("Default Encoding", @"TestFiles\UTF-8.csv", Encoding.Default);
             Console.ReadLine();
         }
 
         private static void PrintFile(string type, string file, Encoding encoding)
         {
-            Console.WriteLine(type);
+            Console.WriteLine("***" + type);
 
             using(var stream = new FileStream(file,FileMode.Open,FileAccess.Read))
             using (var streamReader = new StreamReader(stream, encoding))
