@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Scrath
+namespace FileEncoding
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     class Program
@@ -11,6 +11,10 @@ namespace Scrath
         // ReSharper disable once UnusedParameter.Local
         static void Main(string[] args)
         {
+
+            // files saved as ANSI (probably from Excel as a CSV in a country with codepage 1252) are not being read correctly
+            // this program shows a file saved as ansi and one as UTF and how they render from the stream
+            // it's not pretty
 
            SetEncodingAndPrint("Default", Encoding.Default);
            SetEncodingAndPrint("Ascii", Encoding.ASCII);
