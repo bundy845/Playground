@@ -58,12 +58,10 @@ namespace FileEncoding
                 return Encoding.UTF7;
             } // UTF-7
 
-
             //////////// If the code reaches here, no BOM/signature was found, so now
             //////////// we need to 'taste' the file to see if can manually discover
             //////////// the encoding. A high taster value is desired for UTF-8
             if (taster == 0 || taster > b.Length) taster = b.Length;    // Taster size can't be bigger than the filesize obviously.
-
 
             // Some text files are encoded in UTF8, but have no BOM/signature. Hence
             // the below manually checks for a UTF8 pattern. This code is based off
@@ -102,7 +100,7 @@ namespace FileEncoding
                 if (b[n] == 0) 
                     count++;
 
-            if (((double) count)/taster > threshold)
+            if (((double) count) / taster > threshold)
             {
                 text = Encoding.BigEndianUnicode.GetString(b); return Encoding.BigEndianUnicode;
             }
@@ -113,9 +111,10 @@ namespace FileEncoding
                 if (b[n] == 0) 
                     count++;
 
-            if (((double) count)/taster > threshold)
+            if (((double) count) / taster > threshold)
             {
-                text = Encoding.Unicode.GetString(b); return Encoding.Unicode;
+                text = Encoding.Unicode.GetString(b); 
+                return Encoding.Unicode;
             } // (little-endian)
 
 
@@ -124,8 +123,14 @@ namespace FileEncoding
             for (var n = 0; n < taster - 9; n++)
             {
                 if (
-                    ((b[n + 0] == 'c' || b[n + 0] == 'C') && (b[n + 1] == 'h' || b[n + 1] == 'H') && (b[n + 2] == 'a' || b[n + 2] == 'A') && (b[n + 3] == 'r' || b[n + 3] == 'R') && (b[n + 4] == 's' || b[n + 4] == 'S') && (b[n + 5] == 'e' || b[n + 5] == 'E') && (b[n + 6] == 't' || b[n + 6] == 'T') && (b[n + 7] == '=')) ||
-                    ((b[n + 0] == 'e' || b[n + 0] == 'E') && (b[n + 1] == 'n' || b[n + 1] == 'N') && (b[n + 2] == 'c' || b[n + 2] == 'C') && (b[n + 3] == 'o' || b[n + 3] == 'O') && (b[n + 4] == 'd' || b[n + 4] == 'D') && (b[n + 5] == 'i' || b[n + 5] == 'I') && (b[n + 6] == 'n' || b[n + 6] == 'N') && (b[n + 7] == 'g' || b[n + 7] == 'G') && (b[n + 8] == '='))
+                    ((b[n + 0] == 'c' || b[n + 0] == 'C') && (b[n + 1] == 'h' || b[n + 1] == 'H') &&
+                     (b[n + 2] == 'a' || b[n + 2] == 'A') && (b[n + 3] == 'r' || b[n + 3] == 'R') &&
+                     (b[n + 4] == 's' || b[n + 4] == 'S') && (b[n + 5] == 'e' || b[n + 5] == 'E') &&
+                     (b[n + 6] == 't' || b[n + 6] == 'T') && (b[n + 7] == '=')) ||
+                    ((b[n + 0] == 'e' || b[n + 0] == 'E') && (b[n + 1] == 'n' || b[n + 1] == 'N') &&
+                     (b[n + 2] == 'c' || b[n + 2] == 'C') && (b[n + 3] == 'o' || b[n + 3] == 'O') &&
+                     (b[n + 4] == 'd' || b[n + 4] == 'D') && (b[n + 5] == 'i' || b[n + 5] == 'I') &&
+                     (b[n + 6] == 'n' || b[n + 6] == 'N') && (b[n + 7] == 'g' || b[n + 7] == 'G') && (b[n + 8] == '='))
                     )
                 {
                     if (b[n + 0] == 'c' || b[n + 0] == 'C') n += 8; else n += 9;
