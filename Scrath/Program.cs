@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Scrath
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     class Program
     {
+        // ReSharper disable once UnusedParameter.Local
         static void Main(string[] args)
         {
 
