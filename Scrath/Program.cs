@@ -10,9 +10,19 @@ namespace Scrath
         static void Main(string[] args)
         {
 
-            PrintFile("Default Encoding", @"TestFiles\ANSI.csv", Encoding.Default);
-            PrintFile("Default Encoding", @"TestFiles\UTF-8.csv", Encoding.Default);
-            Console.ReadLine();
+           SetEncodingAndPrint("Default", Encoding.Default);
+           SetEncodingAndPrint("Ascii", Encoding.ASCII);
+           SetEncodingAndPrint("Unicode", Encoding.Unicode);
+           SetEncodingAndPrint("UTF-8", Encoding.UTF8);
+           SetEncodingAndPrint("UTF-7", Encoding.UTF7);
+           SetEncodingAndPrint("1252 Codepage", Encoding.GetEncoding(1252)); 
+           Console.ReadLine();
+        }
+
+        private static void SetEncodingAndPrint( string encodingName, Encoding encoding)
+        {
+            PrintFile(encodingName + " - Ansi File", @"TestFiles\ANSI.csv", encoding);
+            PrintFile(encodingName + " - UTF-8 File", @"TestFiles\UTF-8.csv", encoding);
         }
 
         private static void PrintFile(string type, string file, Encoding encoding)
