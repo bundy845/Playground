@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileEncoding", "FileEncoding\FileEncoding.csproj", "{93FED77A-9426-4D0C-93C4-9D97210E9EC1}"
 EndProject
@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6FC443
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqStuff", "LinqStuff\LinqStuff.csproj", "{7A48894C-6536-4C90-9CE6-870FD91E207F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,10 @@ Global
 		{93FED77A-9426-4D0C-93C4-9D97210E9EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93FED77A-9426-4D0C-93C4-9D97210E9EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93FED77A-9426-4D0C-93C4-9D97210E9EC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A48894C-6536-4C90-9CE6-870FD91E207F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A48894C-6536-4C90-9CE6-870FD91E207F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A48894C-6536-4C90-9CE6-870FD91E207F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A48894C-6536-4C90-9CE6-870FD91E207F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
