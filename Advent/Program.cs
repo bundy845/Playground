@@ -21,8 +21,57 @@ namespace Advent
 			//Day7Setup();
 			//Console.WriteLine("Day 7A " + Day7("a"));
 			//Console.WriteLine("Day 7B " + Day7B("b", "a"));
-			Console.Write("Day 8 " + Day8());
+			//Console.Write("Day 8 " + Day8());
+			Console.WriteLine("Day 9 " + Day9());
 			Console.ReadLine();
+		}
+
+		private static int Day9()
+		{
+			var lines = GetInput(9);
+
+			//Tristram to AlphaCentauri = 34
+
+			var x = new List<string>();
+			var sizes = new Dictionary<string, int>();
+			foreach (var parts in lines.Select(line => line.Split(' ')))
+			{
+				if (!x.Contains(parts[0]))
+					x.Add(parts[0]);
+
+				if (!x.Contains(parts[2]))
+					x.Add(parts[2]);
+
+				sizes.Add($"{parts[0]}{parts[2]}", int.Parse(parts[4]));
+				sizes.Add($"{parts[2]}{parts[0]}", int.Parse(parts[4]));
+			}
+
+			var perms = GetPermutations<string>(x.ToArray());
+
+			var min = int.MaxValue;
+			var max = 0;
+
+			foreach (var perm in perms)
+			{
+				var distance = 0;
+				for (var i = 0; i < perm.Length-1; i++)
+				{
+					distance += sizes[$"{perm[i]}{perm[i + 1]}"];
+				}
+				min = Math.Min(min, distance);
+				max = Math.Max(max, distance);
+			}
+			Console.WriteLine("Min " + min);
+			Console.WriteLine("Max " + max);
+			return 0;
+		}
+		private static IEnumerable<T[]> GetPermutations<T>(T[] values)
+		{
+			if (values.Length == 1)
+				return new[] { values };
+
+			return values.SelectMany(v => GetPermutations(values.Except(new[] { v }).ToArray()),
+				(v, p) => new[] { v }.Concat(p).ToArray());
 		}
 
 		private static int Day8()
